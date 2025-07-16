@@ -1,0 +1,35 @@
+@import url("https://fonts.cdnfonts.com/css/arima-madurai");
+@import url("https://fonts.cdnfonts.com/css/poppins");
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: "Poppins", Arial, Helvetica, sans-serif;
+}
+
+*,
+*:focus,
+*:hover {
+	outline: none;
+}
+
+body,
+html {
+	background-image: url(./assets/background.png);
+}
+
+li {
+	list-style-type: none;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+h1,
+h2,
+h3 {
+	font-family: "Arima Madurai", Arial, Helvetica, sans-serif;
+}

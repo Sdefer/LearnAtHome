@@ -1,0 +1,24 @@
+.btn {
+	border-radius: 10px;
+	height: 45px;
+	width: 200px;
+	margin-bottom: 15px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 1em;
+	border: none;
+	box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.btn.primary {
+	background-color: #db3d54;
+}
+
+.btn.secondary {
+	background-color: white;
+	color: #db3d54;
+}
