@@ -6,8 +6,7 @@
 	margin: 0;
 	padding-top: 5%;
 }
-
-.login_container {
+.recovery_container {
 	@include loginCards;
 	@include cardApparition(loginFadeIn);
 	animation: loginFadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -18,6 +17,17 @@
 		justify-content: center;
 		img {
 			max-width: 350px;
+		}
+	}
+
+	.recovery_info {
+		h2 {
+			font-weight: 1000;
+			margin-bottom: 10px;
+		}
+
+		p {
+			margin-bottom: 30px;
 		}
 	}
 
@@ -45,8 +55,7 @@
 				}
 			}
 
-			.email_icon,
-			.password_icon {
+			.email_icon {
 				position: absolute;
 				left: 10px;
 				top: 25px;
@@ -57,82 +66,38 @@
 				padding-right: 7px;
 				border-right: 1px solid #c4c4c4;
 			}
-			.eye_icon {
-				position: absolute;
-				right: 15px;
-				top: 25px;
-				width: 30px;
-				height: 30px;
-				color: grey;
-				cursor: pointer;
-			}
 		}
 	}
 
-	.login_options {
-		margin-top: 20px;
-		display: flex;
-		justify-content: space-between;
-
-		.remember {
-			display: flex;
-			width: 50%;
-
-			input {
-				margin-right: 10px;
-				cursor: pointer;
-			}
-		}
-
-		.forgot {
-			width: 50%;
-			font-size: 0.9em;
-			color: #db3d54;
-			font-style: italic;
-			text-decoration: underline;
-			text-align: end;
-			cursor: pointer;
-		}
-	}
-
-	.login_actions {
-		margin-top: 60px;
+	.recovery_actions {
+		margin-top: 30px;
 		display: flex;
 		flex-flow: column nowrap;
 		align-items: center;
 
-		.signUp_btn {
-			font-weight: bolder;
-			color: #db3d54;
+		.back_btn {
 			cursor: pointer;
-			transition: all 0.25s ease;
-
-			&:hover {
-				font-size: 1.1em;
-				transition: all 0.25s ease;
-				transform: rotate(-2deg) scale(1.05);
-				color: #5e114c !important;
-			}
+			text-decoration: underline;
 		}
 	}
 }
 
 @media only screen and (max-width: 480px) {
 	.container {
-		padding-top: 25%;
+		padding-top: 15%;
 	}
 
-	.login_container {
+	.recovery_container {
 		background-color: transparent;
 		border-radius: 0;
 		box-shadow: none;
-		padding: 20px;
+		padding: 0 20px;
 
 		.logo {
 			margin-bottom: 45px;
 
 			img {
-				max-width: 240px;
+				max-width: 260px;
 			}
 		}
 
@@ -141,30 +106,24 @@
 				input {
 					font-size: 1em;
 				}
-				.email_icon,
-				.password_icon {
-					top: 28px;
-					width: 24px;
-					height: 24px;
-				}
 			}
 		}
 
-		.login_options {
-			position: relative;
+		.recovery_info {
+			color: white;
 
-			.remember {
-				color: white;
-				width: 100%;
+			h2 {
+				font-size: 1.4em;
 			}
 
-			.forgot {
-				position: absolute;
-				top: 200px;
-				right: 0px;
-				color: white;
-				width: 100%;
+			p {
+				font-size: 0.9em;
+				font-weight: 300;
 			}
+		}
+
+		.recovery_actions {
+			color: white;
 		}
 	}
 }

@@ -1,17 +1,18 @@
 import "./login.scss"
 
 import Button from "../../components/button/index"
+import { useNavigate } from "react-router"
 
 import { CiAt } from "react-icons/ci"
 import { CiLock } from "react-icons/ci"
 import { GoEyeClosed } from "react-icons/go"
-import { IconContext } from "react-icons"
 
 import logo_desktop from "../../assets/logo.png"
 import logo_mobile from "../../assets/logo_variant.png"
 
 function Login() {
 	const isDesktop = () => window.innerWidth > 480
+	const navigate = useNavigate()
 
 	return (
 		<div className="container">
@@ -21,20 +22,14 @@ function Login() {
 				</div>
 				<form className="form">
 					<label htmlFor="email">
-						<IconContext.Provider value={{ className: "email_icon" }}>
-							<CiAt />
-						</IconContext.Provider>
-						<input id="email" type="text" name="email" placeholder="EMAIL" />
+						<CiAt className="email_icon" />
+						<input id="email" type="text" name="email" placeholder="E-mail" />
 					</label>
 
 					<label htmlFor="password">
-						<IconContext.Provider value={{ className: "password_icon" }}>
-							<CiLock />
-						</IconContext.Provider>
-						<input id="password" type="text" name="password" placeholder="PASSWORD" />
-						<IconContext.Provider value={{ className: "eye_icon" }}>
-							<GoEyeClosed />
-						</IconContext.Provider>
+						<CiLock className="password_icon" />
+						<input id="password" type="text" name="password" placeholder="Password" />
+						<GoEyeClosed className="eye_icon" />
 					</label>
 				</form>
 				<div className="login_options">
@@ -42,7 +37,7 @@ function Login() {
 						<input type="checkbox" />
 						<p>Remember me</p>
 					</div>
-					<div className="forgot">
+					<div className="forgot" onClick={() => navigate("/recovery")}>
 						<p>Forgot password ?</p>
 					</div>
 				</div>

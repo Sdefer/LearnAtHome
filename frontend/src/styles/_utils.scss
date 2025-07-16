@@ -1,0 +1,28 @@
+@mixin cardApparition($animationName) {
+	@keyframes #{$animationName} {
+		0% {
+			transform: translateY(40px) scale(0.95);
+			opacity: 0;
+		}
+		60% {
+			transform: translateY(-8px) scale(1.02);
+			opacity: 1;
+		}
+		100% {
+			transform: translateY(0px) scale(1);
+			opacity: 1;
+		}
+	}
+}
+
+@mixin loginCards {
+	max-width: 500px;
+	max-height: 600px;
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+	background-color: white;
+	border-radius: 10px;
+	box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.25);
+	padding: 45px 45px;
+}
