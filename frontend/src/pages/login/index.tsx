@@ -1,7 +1,11 @@
 import "./login.scss"
 
 import Button from "../../components/button/index"
+
 import { useNavigate } from "react-router"
+import { useState } from "react"
+import { useAppDispatch } from "../../hooks/redux-hooks"
+import { login } from "../../slices/authSlice"
 
 import { CiAt } from "react-icons/ci"
 import { CiLock } from "react-icons/ci"
@@ -12,7 +16,29 @@ import logo_mobile from "../../assets/logo_variant.png"
 
 function Login() {
 	const isDesktop = () => window.innerWidth > 480
+
 	const navigate = useNavigate()
+	const dispatch = useAppDispatch()
+
+	const [email, setEmail] = useState("")
+	const [password, setPassword] = useState("")
+
+	const handleLogin = async () => {
+		if (email && password) {
+			try {
+				await dispatch(
+					login({
+						email,
+						password,
+					})
+				).unwrap()
+			} catch (e) {
+				console.error(e)
+			}
+		} else {
+			// Show an error message.
+		}
+	}
 
 	return (
 		<div className="container">
@@ -23,12 +49,19 @@ function Login() {
 				<form className="form">
 					<label htmlFor="email">
 						<CiAt className="email_icon" />
-						<input id="email" type="text" name="email" placeholder="E-mail" />
+						<input id="email" type="text" name="email" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)} />
 					</label>
 
 					<label htmlFor="password">
 						<CiLock className="password_icon" />
-						<input id="password" type="text" name="password" placeholder="Password" />
+						<input
+							id="password"
+							type="password"
+							name="password"
+							placeholder="Password"
+							value={password}
+							onChange={(e) => setPassword(e.target.value)}
+						/>
 						<GoEyeClosed className="eye_icon" />
 					</label>
 				</form>
@@ -42,8 +75,12 @@ function Login() {
 					</div>
 				</div>
 				<div className="login_actions">
-					<Button variant={isDesktop() ? "primary" : "secondary"}>Login</Button>
-					<p className="signUp_btn">Sign Up</p>
+					<Button variant={isDesktop() ? "primary" : "secondary"} onClick={handleLogin}>
+						Login
+					</Button>
+					<p className="signUp_btn" onClick={() => navigate("/register")}>
+						Sign Up
+					</p>
 				</div>
 			</div>
 		</div>
