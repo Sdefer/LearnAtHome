@@ -3,7 +3,7 @@ import User from "../models/User";
 import { generateToken, clearToken } from "../utils/auth";
 
 const registerUser = async (req: Request, res: Response) => {
-  const { firstName, lastName, email, password } = req.body;
+  const { firstName, lastName, email, password, role } = req.body;
   const userExists = await User.findOne({ email });
 
   if (userExists) {
@@ -15,6 +15,7 @@ const registerUser = async (req: Request, res: Response) => {
     lastName,
     email,
     password,
+    role,
   });
 
   if (user) {
@@ -24,6 +25,7 @@ const registerUser = async (req: Request, res: Response) => {
       firstName: user.firstName,
       lastName: user.lastName,
       email: user.email,
+      role: user.role,
     });
   } else {
     res.status(400).json({ message: "An error occurred in creating the user" });
@@ -41,6 +43,7 @@ const authenticateUser = async (req: Request, res: Response) => {
       firstName: user.firstName,
       lastName: user.lastName,
       email: user.email,
+      role: user.role,
     });
   } else {
     res.status(401).json({ message: "User not found / password incorrect" });

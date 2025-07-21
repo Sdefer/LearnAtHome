@@ -6,6 +6,7 @@ export interface IUser extends Document {
   lastName: string;
   email: string;
   password: string;
+  role: string;
   comparePassword: (enteredPassword: string) => boolean;
 }
 
@@ -27,6 +28,10 @@ const userSchema = new Schema<IUser>({
     type: String,
     required: true,
   },
+  role: {
+    type: String,
+    required: true,
+  }
 });
 
 userSchema.pre("save", async function (next) {

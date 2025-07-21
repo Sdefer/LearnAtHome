@@ -10,6 +10,7 @@ type User = {
 type NewUser = User & {
   firstName: string;
   lastName: string;
+  role: string;
 };
 
 type UserBasicInfo = {
@@ -17,12 +18,14 @@ type UserBasicInfo = {
   firstName: string;
   lastName: string;
   email: string;
+  role: string;
 };
 
 type UserProfileData = {
   firstName: string;
   lastName: string;
   email: string;
+  role: string;
 };
 
 type AuthApiState = {
