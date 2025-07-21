@@ -1,22 +1,29 @@
 import { styled } from "@mui/material/styles"
 import Switch, { switchClasses } from "@mui/material/Switch"
 
-export const SwitchTextTrack = styled(Switch)({
+interface SwitchTextTrackProps {
+	isMobile?: boolean
+}
+
+export const SwitchTextTrack = styled((props: SwitchTextTrackProps & any) => {
+	const { isMobile, ...rest } = props
+	return <Switch {...rest} />
+})<SwitchTextTrackProps>(({ isMobile }) => ({
 	width: 80,
 	height: 48,
-	overflow: "visible",
 	padding: 8,
+	overflow: "visible",
 	[`& .${switchClasses.switchBase}`]: {
 		padding: 11,
-		color: "#ff6a00",
+		color: isMobile ? "transparent" : "#ff6a00",
 	},
 	[`& .${switchClasses.thumb}`]: {
 		width: 26,
 		height: 26,
-		backgroundColor: "#fff",
+		backgroundColor: isMobile ? "#db3d54" : "#fff",
 	},
 	[`& .${switchClasses.track}`]: {
-		background: "linear-gradient(to right, #e37686, #f02240)",
+		background: isMobile ? "white" : "linear-gradient(to right, #e37686, #f02240)",
 		opacity: "1 !important",
 		borderRadius: 20,
 		position: "relative",
@@ -32,37 +39,37 @@ export const SwitchTextTrack = styled(Switch)({
 		},
 		"&:before": {
 			content: '"Student"',
-			left: -80,
-			color: "#db3d54",
+			left: isMobile ? -75 : -80,
+			color: isMobile ? "white" : "#db3d54",
 			fontWeight: "bold",
 		},
 		"&:after": {
 			content: '"Teacher"',
 			right: -45,
-			color: "#757575",
+			color: isMobile ? "white" : "#757575",
 		},
 	},
 	[`& .${switchClasses.checked}`]: {
 		[`&.${switchClasses.switchBase}`]: {
-			color: "#185a9d",
+			color: "white",
 			transform: "translateX(32px)",
 			"&:hover": {
-				backgroundColor: "rgba(236, 54, 81,0.08)",
+				backgroundColor: isMobile ? "transparent" : "rgba(236, 54, 81,0.08)",
 			},
 		},
 		[`& .${switchClasses.thumb}`]: {
-			backgroundColor: "#fff",
+			backgroundColor: isMobile ? "#5e114c" : "white",
 		},
 		[`& + .${switchClasses.track}`]: {
-			background: "linear-gradient(45deg, #9e4d8c, #150110)",
+			background: isMobile ? "white!important" : "linear-gradient(45deg, #9e4d8c, #150110)",
 			"&:before": {
-				color: "#757575",
+				color: isMobile ? "white" : "#757575",
 				fontWeight: 300,
 			},
 			"&:after": {
-				color: "purple",
+				color: isMobile ? "white" : "purple",
 				fontWeight: "bold",
 			},
 		},
 	},
-})
+}))

@@ -78,7 +78,7 @@ function Register() {
 								id="firstName"
 								type="text"
 								name="firstName"
-								placeholder="Firstname"
+								placeholder="First name"
 								value={firstName}
 								onChange={(e) => setFirstName(e.target.value)}
 							/>
@@ -89,7 +89,7 @@ function Register() {
 								id="lastName"
 								type="text"
 								name="lastName"
-								placeholder="lastName"
+								placeholder="Last name"
 								value={lastName}
 								onChange={(e) => setLastName(e.target.value)}
 							/>
@@ -117,7 +117,7 @@ function Register() {
 					</label>
 					<label htmlFor="confirmPassword">
 						<CiLock className="password_icon" />
-						<input id="confirmPassword" type={confirmPasswordType} name="confirmPassword" placeholder="Confirm Password" />
+						<input id="confirmPassword" type={confirmPasswordType} name="confirmPassword" placeholder="Confirm password" />
 						{confirmPasswordType === "password" ? (
 							<GoEyeClosed className="eye_icon" onClick={handleConfirmPasswordToggle} />
 						) : (
@@ -125,7 +125,7 @@ function Register() {
 						)}
 					</label>
 					<div className="switch">
-						<SwitchTextTrack className="switchBtn" checked={role === "teacher"} onChange={handleSwitchChange} />
+						<SwitchTextTrack className="switchBtn" checked={role === "teacher"} onChange={handleSwitchChange} isMobile={!isDesktop()} />
 					</div>
 					<div className="terms">
 						<input
@@ -145,8 +145,8 @@ function Register() {
 						</Button>
 					</div>
 				</form>
-				<div className="forgot" onClick={() => navigate("/login")}>
-					<p>Already have an account ?</p>
+				<div className="login_redirect" onClick={() => navigate("/login")}>
+					<p>Already have an account?</p>
 				</div>
 			</div>
 		</div>
